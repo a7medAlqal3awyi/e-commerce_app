@@ -72,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                LayoutCubit.get(context).userModel!.name!,
+                                LayoutCubit.get(context).userModel!.name??"",
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
