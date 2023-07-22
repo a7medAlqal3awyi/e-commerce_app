@@ -27,8 +27,6 @@ class AuthCubit extends Cubit<AuthStates> {
         if (responseData['status'] == true) {
           await CacheNetwork.insertToCache(
               key: "token", value: responseData['data']['token']);
-
-          print(response.body);
           emit(LoginSuccessState());
         } else {
           debugPrint("Failed to login, reason is : ${responseData['message']}");
@@ -54,7 +52,7 @@ class AuthCubit extends Cubit<AuthStates> {
           'email': email,
           'password': password,
           'phone': phone,
-          'image': "image"
+          'image': "image",
         },
       );
       if (response.statusCode == 200) {
@@ -76,7 +74,7 @@ class AuthCubit extends Cubit<AuthStates> {
   bool isPassword = true;
   IconData suffix = Icons.visibility;
 
-  void changeIconVisability() {
+  void Function()? changeIconVisability() {
     isPassword = !isPassword;
     suffix = isPassword ? Icons.visibility : Icons.visibility_off_outlined;
     emit(ChangeIconState());

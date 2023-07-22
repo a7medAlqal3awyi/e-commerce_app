@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:joomla/presentation/cubit/auth/auth_cubit.dart';
 import 'package:joomla/presentation/cubit/layout/layout_cubit.dart';
 import 'package:joomla/presentation/cubit/layout/layout_screen.dart';
+import 'package:joomla/presentation/screens/auth/login_screen.dart';
 import 'package:joomla/presentation/screens/on_bourding.dart';
 import 'package:joomla/utils/constans.dart';
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(primarySwatch: defaultColor as MaterialColor),
         debugShowCheckedModeBanner: false,
-        home: token != null ? const LayoutScreen() : const OnBoardingScreen(),
+        home: token != null ? const LayoutScreen() : const LoginScreen(),
       ),
     );
   }

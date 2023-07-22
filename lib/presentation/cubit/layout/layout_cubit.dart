@@ -236,7 +236,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     currentIndex = 0;
     CacheNetwork.deleteCacheItem(key: "token");
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+        context, MaterialPageRoute(builder: (context) =>  LoginScreen()));
     emit(LogoutSuccessState());
   }
 

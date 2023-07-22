@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget defaultTextFormField({
@@ -13,7 +12,7 @@ Widget defaultTextFormField({
   required validate,
   required IconData prefix,
   suffix,
-  suffixPressed,
+  void Function()? suffixPressed,
 }) =>
     TextFormField(
       controller: controller,
@@ -24,16 +23,17 @@ Widget defaultTextFormField({
       validator: validate,
       decoration: InputDecoration(
         labelText: label,
-
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        border:  OutlineInputBorder(
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(28),
           gapPadding: 10,
-
         ),
         prefixIcon: Icon(prefix),
         suffixIcon: suffix != null
-            ? IconButton(onPressed: suffixPressed, icon: Icon(suffix))
+            ? IconButton(
+                onPressed: suffixPressed,
+                icon: Icon(suffix),
+              )
             : null,
       ),
     );

@@ -135,6 +135,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 : null;
                           },
                           prefix: IconBroken.Password,
+                            suffix: AuthCubit.get(context).suffix,
+                            isPassword: AuthCubit.get(context).isPassword,
+                          suffixPressed: (){
+                            AuthCubit.get(context).changeIconVisability();
+                          }
                         ),
                         const SizedBox(
                           height: 20,
@@ -255,7 +260,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const LoginScreen()),
+                                           LoginScreen()),
                                 );
                               },
                               child: Text("Sign in".toUpperCase()),

@@ -12,8 +12,6 @@ class LoginErrorState extends AuthStates {
   LoginErrorState({required this.error});
 }
 
-class ChangeIconState extends AuthStates {}
-
 class RegisterLoadingState extends AuthStates {}
 
 class RegisterSuccessState extends AuthStates {}
@@ -23,3 +21,5 @@ class RegisterErrorState extends AuthStates {
 
   RegisterErrorState({required this.error});
 }
+
+class ChangeIconState extends AuthStates {}

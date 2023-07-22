@@ -40,10 +40,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       appBar: AppBar(backgroundColor: Colors.white, elevation: 0, actions: [
         MaterialButton(
           onPressed: () {
-            Navigator.pushAndRemoveUntil(
+            Navigator.pushAndRemoveUntil<void>(
               context,
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
+              MaterialPageRoute<void>(
+                builder: (context) =>  LoginScreen(),
               ),
               (route) {
                 return false;
@@ -102,7 +102,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
+                          builder: (context) =>  LoginScreen(),
                         ),
                         (route) {
                           return false;

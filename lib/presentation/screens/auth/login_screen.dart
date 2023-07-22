@@ -8,7 +8,6 @@ import '../../../utils/constans.dart';
 import '../../cubit/auth/auth_cubit.dart';
 import '../../cubit/auth/auth_states.dart';
 import '../../cubit/layout/layout_screen.dart';
-import '../../widgets/alert_dialog.dart';
 import '../../widgets/custom_text_form_field.dart';
 import 'register_screen.dart';
 
@@ -20,13 +19,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final formKey = GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
-
-  bool passwordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -39,37 +36,19 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const LayoutScreen()));
           } else if (state is LoginErrorState) {
-            Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
                 showCloseIcon: true,
                 clipBehavior: Clip.antiAlias,
                 backgroundColor: Colors.red,
                 closeIconColor: Colors.white,
-                content: Text(state.error)));
-          } else {
-            showAlertDialog(
-                context: context,
-                backgroundColor: Colors.white,
-                content: AnimatedContainer(
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.easeIn,
-                  child: Row(
-                    children: [
-                      Row(
-                        children: [
-                          CircularProgressIndicator(color: defaultColor),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            "wait",
-                            style: TextStyle(fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ],
+                content: Center(
+                  child: Text(
+                    state.error,
                   ),
-                ));
+                ),
+              ),
+            );
           }
         },
         builder: (context, state) {
@@ -118,20 +97,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           defaultTextFormField(
                               controller: passwordController,
-                              label: 'Password',
                               type: TextInputType.visiblePassword,
+                              label: 'Password',
                               validate: (value) {
-                                if (value.toString().isEmpty) {
-                                  return "Password must not be empty";
-                                } else {
-                                  return null;
-                                }
+                                return emailController.text.isEmpty
+                                    ? "Password must not be empty"
+                                    : null;
                               },
-                              prefix: IconBroken.Lock,
-                              suffix: AuthCubit.get(context).suffix,
-                              isPassword: AuthCubit.get(context).isPassword,
-                              suffixPressed:
-                                  AuthCubit.get(context).changeIconVisability,
                               onSubmit: (value) {
                                 if (formKey.currentState!.validate()) {
                                   AuthCubit.get(context).login(
@@ -139,6 +111,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                     password: passwordController.text,
                                   );
                                 }
+                              },
+
+                              prefix: IconBroken.Password,
+                              suffix: AuthCubit.get(context).suffix,
+                              isPassword: AuthCubit.get(context).isPassword,
+                              suffixPressed: () {
+                                AuthCubit.get(context).changeIconVisability();
                               }),
                           const SizedBox(
                             height: 20,
