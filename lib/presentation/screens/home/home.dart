@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                             );
                           }));
                         },
-                        child: Padding(
+                        child:Padding(
                           padding: const EdgeInsets.symmetric(
                             vertical: 6,
                             horizontal: 3,
@@ -128,8 +128,8 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     Padding(
                                       padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              10, 10, 10, 10),
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          10, 10, 10, 10),
                                       child: Image(
                                         image: NetworkImage(
                                           cubit.productModel![index].image!,
@@ -146,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                                           decoration: BoxDecoration(
                                               color: defaultColor,
                                               borderRadius:
-                                                  BorderRadius.circular(10)),
+                                              BorderRadius.circular(10)),
                                           child: Text(
                                             '${cubit.productModel![index].discount!}%OFF',
                                             style: const TextStyle(
@@ -178,7 +178,7 @@ class HomeScreen extends StatelessWidget {
                                         '${cubit.productModel[index].oldPrice!}\$',
                                         style: const TextStyle(
                                             decoration:
-                                                TextDecoration.lineThrough,
+                                            TextDecoration.lineThrough,
                                             color: Colors.grey,
                                             fontSize: 12.8),
                                       ),
@@ -200,30 +200,60 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ),
                                     const Spacer(),
-                                    IconButton(
-                                      onPressed: () {
-                                        BlocProvider.of<LayoutCubit>(context)
-                                            .addOrRemoveFromFavorites(
-                                                id: cubit
-                                                    .productModel[index].id!
-                                                    .toString());
-                                        // cubit.addOrRemoveFromFavorites(
-                                        //     id: cubit.productModel![index].id!
-                                        //         .toString());
-                                      },
-                                      icon: CircleAvatar(
-                                        radius: 15,
-                                        backgroundColor: Colors.grey,
+                                    InkWell(
+                                      child: Container(
+                                        margin: const EdgeInsets.all(10),
+                                        height: 30,
+                                        width: 30,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(20),
+                                            color: Colors.grey,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.4),
+                                                spreadRadius: 5,
+                                                blurRadius: 8,
+                                                offset: const Offset(0,
+                                                    3), // changes position of shadow
+                                              ),
+                                            ]),
                                         child: Icon(
                                           Icons.favorite,
                                           color: cubit.favIDs!.contains(cubit
-                                                  .productModel![index].id!
-                                                  .toString())
+                                              .productModel![index].id!
+                                              .toString())
                                               ? defaultColor
                                               : Colors.white,
+                                          size: 25,
                                         ),
                                       ),
+                                      onTap: () {
+                                        cubit.addOrRemoveFromFavorites(
+                                            id: cubit.productModel[index].id!
+                                                .toString());
+                                      },
                                     ),
+                                    // CircleAvatar(
+                                    //   child: MaterialButton(
+                                    //     onPressed: () {
+                                    //       cubit.addOrRemoveFromFavorites(
+                                    //           id: cubit.productModel[index].id!
+                                    //               .toString());
+                                    //     },
+                                    //     child: Center(
+                                    //       child: Icon(
+                                    //         Icons.favorite,
+                                    //         color: cubit.favIDs!.contains(cubit
+                                    //                 .productModel![index].id!
+                                    //                 .toString())
+                                    //             ? defaultColor
+                                    //             : Colors.white,
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                               ],

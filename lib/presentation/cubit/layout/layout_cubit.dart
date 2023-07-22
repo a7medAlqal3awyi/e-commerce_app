@@ -140,8 +140,13 @@ class LayoutCubit extends Cubit<LayoutStates> {
     favIDs.contains(id) ? favIDs.remove(id) : favIDs.add(id);
     Response response = await http.post(
         Uri.parse('https://student.valuxapps.com/api/favorites'),
-        headers: {'lang': 'en', 'Authorization': token!},
-        body: {'product_id': id});
+        headers: {
+          'lang': 'en',
+          'Authorization': token!,
+        },
+        body: {
+          'product_id': id
+        });
     var responseData = jsonDecode(response.body);
     if (responseData['status'] == true) {
       await getFavorites();
@@ -236,7 +241,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     currentIndex = 0;
     CacheNetwork.deleteCacheItem(key: "token");
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) =>  LoginScreen()));
+        context, MaterialPageRoute(builder: (context) => LoginScreen()));
     emit(LogoutSuccessState());
   }
 

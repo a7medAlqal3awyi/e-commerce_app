@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           if (state is LoginSuccessState) {
             Navigator.pop(context);
-            Navigator.pushReplacement(context,
+            Navigator.pushReplacement<void, void>(context,
                 MaterialPageRoute(builder: (context) => const LayoutScreen()));
           } else if (state is LoginErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -112,7 +112,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   );
                                 }
                               },
-
                               prefix: IconBroken.Password,
                               suffix: AuthCubit.get(context).suffix,
                               isPassword: AuthCubit.get(context).isPassword,

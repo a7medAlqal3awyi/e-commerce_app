@@ -36,10 +36,11 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
           },
           child: _showMore
               ? Row(
+            mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       'Show less',
-                      style: TextStyle(color: defaultColor),
+                      style: TextStyle(color: defaultColor, fontSize: 16),
                     ),
                     const SizedBox(
                       width: 5,
@@ -51,10 +52,12 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
                   ],
                 )
               : Row(
-                  children: [
+            mainAxisSize: MainAxisSize.min,
+
+            children: [
                     Text(
                       'Show more',
-                      style: TextStyle(color: defaultColor),
+                      style: TextStyle(color: defaultColor, fontSize: 16),
                     ),
                     const SizedBox(
                       width: 5,
