@@ -21,10 +21,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   List<BoardingModel> boarding = [
     BoardingModel(
-      image: 'assets/images/on.jpeg',
+      image: 'assets/images/joomla_logo.png',
       body: 'Welcome to Our Shop',
     ),
-    BoardingModel(image: 'assets/images/on3.jpg', body: 'Join Our Community'),
+    BoardingModel(
+      image: 'assets/images/on.jpeg',
+      body: 'Join Our Community',
+    ),
     BoardingModel(
         image: 'assets/images/on4.jpg',
         body: 'Unlock Huge Savings This Black Friday'),
@@ -107,13 +110,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       );
                     } else {
                       boardingController.nextPage(
-                          duration: const Duration(
-                            microseconds: 750,
-                          ),
-                          curve: Curves.fastLinearToSlowEaseIn);
+                        duration: const Duration(
+                          microseconds: 750,
+                        ),
+                        curve: Curves.fastLinearToSlowEaseIn,
+                      );
                     }
                   },
-                  child: const Icon(IconBroken.Arrow___Right),
+                  child: const Icon(
+                    IconBroken.Arrow___Right,
+                  ),
                 )
               ],
             ),

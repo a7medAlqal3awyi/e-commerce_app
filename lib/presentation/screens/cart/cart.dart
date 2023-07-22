@@ -18,13 +18,16 @@ class CartScreen extends StatelessWidget {
         var cubit = LayoutCubit.get(context);
 
         if (cubit.cart.isEmpty) {
-          return MaterialApp(
+          return  MaterialApp(
             color: Colors.white,
             debugShowCheckedModeBanner: false,
-            home: Center(
+            home: Scaffold(
+              body: Center(
                 child: CircularProgressIndicator(
-              color: defaultColor,
-            )),
+                  color: defaultColor,
+                ),
+              ),
+            ),
           );
         } else {
           return Scaffold(

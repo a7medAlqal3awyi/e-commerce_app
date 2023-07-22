@@ -113,21 +113,23 @@ class LayoutCubit extends Cubit<LayoutStates> {
   List<ProductModel> favorites = [];
 
   Future<void> getFavorites() async {
-    favorites.clear();
-    emit(FavoritesLoadingState());
-    Response response = await http.get(
-        Uri.parse('https://student.valuxapps.com/api/favorites'),
-        headers: {"lang": "en", "Authorization": token!});
-    var responseData = jsonDecode(response.body);
-    if (responseData['status'] == true) {
-      for (var item in responseData['data']['data']) {
-        favorites!.add(ProductModel.fromJson(item['product']));
+    try {
+      favorites.clear();
+      emit(FavoritesLoadingState());
+      Response response = await http.get(
+          Uri.parse('https://student.valuxapps.com/api/favorites'),
+          headers: {"lang": "en", "Authorization": token!});
+      var responseData = jsonDecode(response.body);
+      if (responseData['status'] == true) {
+        for (var item in responseData['data']['data']) {
+          favorites!.add(ProductModel.fromJson(item['product']));
+        }
+        debugPrint("First item in favorites is ${favorites.length}");
+        emit(FavoritesSuccessState());
       }
-      debugPrint("First item in favorites is ${favorites.length}");
-      emit(FavoritesSuccessState());
-    } else {
+    } on Exception catch (e) {
       debugPrint("Error to load favorites");
-      emit(FavoritesErrorState());
+      emit(FavoritesErrorState(error: e.toString()));
     }
   }
 

@@ -67,7 +67,7 @@ class LayoutScreen extends StatelessWidget {
                 text: AppConstants.categories,
               ),
               GButton(
-                icon: IconBroken.Heart,
+                icon: Icons.favorite_border_rounded,
                 text: AppConstants.favourite,
                 margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 haptic: true,

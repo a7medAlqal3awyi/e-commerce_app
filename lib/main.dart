@@ -36,9 +36,10 @@ class MyApp extends StatelessWidget {
               ..getUsersData()),
       ],
       child: MaterialApp(
-          theme: ThemeData(primarySwatch: defaultColor as MaterialColor),
-          debugShowCheckedModeBanner: false,
-          home: token != null ? const LayoutScreen() : const OnBoardingScreen()),
+        theme: ThemeData(primarySwatch: defaultColor as MaterialColor),
+        debugShowCheckedModeBanner: false,
+        home: token != null ? const LayoutScreen() : const OnBoardingScreen(),
+      ),
     );
   }
 }

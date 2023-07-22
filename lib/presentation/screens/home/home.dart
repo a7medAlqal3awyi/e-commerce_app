@@ -202,9 +202,14 @@ class HomeScreen extends StatelessWidget {
                                     const Spacer(),
                                     IconButton(
                                       onPressed: () {
-                                        cubit.addOrRemoveFromFavorites(
-                                            id: cubit.productModel![index].id!
-                                                .toString());
+                                        BlocProvider.of<LayoutCubit>(context)
+                                            .addOrRemoveFromFavorites(
+                                                id: cubit
+                                                    .productModel[index].id!
+                                                    .toString());
+                                        // cubit.addOrRemoveFromFavorites(
+                                        //     id: cubit.productModel![index].id!
+                                        //         .toString());
                                       },
                                       icon: CircleAvatar(
                                         radius: 15,

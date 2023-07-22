@@ -1,6 +1,6 @@
 name: joomla
 description: A new Flutter project.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -34,16 +34,7 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/images/on4.jpg
-    - assets/images/on.jpeg
-    - assets/images/on3.jpg
-    - assets/images/f.png
-    - assets/images/g.png
-    - assets/images/t.png
-    - assets/images/back.jpg
-    - assets/images/empty.gif
-    - assets/images/loading.gif
-    - assets/images/ahmed.jpg
+    - assets/images/
 
 
   uses-material-design: true
