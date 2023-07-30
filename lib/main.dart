@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(primarySwatch: defaultColor as MaterialColor),
         debugShowCheckedModeBanner: false,
-        home: token != null ? const LayoutScreen() : const LoginScreen(),
+        home: token != null ? const LayoutScreen() : const OnBoardingScreen(),
       ),
     );
   }

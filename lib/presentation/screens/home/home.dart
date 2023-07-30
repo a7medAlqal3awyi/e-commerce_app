@@ -129,7 +129,7 @@ class HomeScreen extends StatelessWidget {
                                     Padding(
                                       padding:
                                       const EdgeInsetsDirectional.fromSTEB(
-                                          10, 10, 10, 10),
+                                          12, 12, 12, 12),
                                       child: Image(
                                         image: NetworkImage(
                                           cubit.productModel![index].image!,
@@ -137,6 +137,7 @@ class HomeScreen extends StatelessWidget {
                                         width: 150,
                                         height: 150,
                                         fit: BoxFit.contain,
+
                                       ),
                                     ),
                                     if (cubit.productModel![index].discount !=
@@ -235,25 +236,7 @@ class HomeScreen extends StatelessWidget {
                                                 .toString());
                                       },
                                     ),
-                                    // CircleAvatar(
-                                    //   child: MaterialButton(
-                                    //     onPressed: () {
-                                    //       cubit.addOrRemoveFromFavorites(
-                                    //           id: cubit.productModel[index].id!
-                                    //               .toString());
-                                    //     },
-                                    //     child: Center(
-                                    //       child: Icon(
-                                    //         Icons.favorite,
-                                    //         color: cubit.favIDs!.contains(cubit
-                                    //                 .productModel![index].id!
-                                    //                 .toString())
-                                    //             ? defaultColor
-                                    //             : Colors.white,
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ),
+
                                   ],
                                 ),
                               ],

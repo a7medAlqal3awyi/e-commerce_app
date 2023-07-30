@@ -85,7 +85,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               label: 'Email Address',
                               type: TextInputType.emailAddress,
                               validate: (value) {
-                                if (value.toString().isEmpty) {
+                                if (value
+                                    .toString()
+                                    .isEmpty) {
                                   return "Email address must not be empty";
                                 } else {
                                   return null;
@@ -113,8 +115,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                               },
                               prefix: IconBroken.Password,
-                              suffix: AuthCubit.get(context).suffix,
-                              isPassword: AuthCubit.get(context).isPassword,
+                              suffix: AuthCubit
+                                  .get(context)
+                                  .suffix,
+                              isPassword: AuthCubit
+                                  .get(context)
+                                  .isPassword,
                               suffixPressed: () {
                                 AuthCubit.get(context).changeIconVisability();
                               }),
@@ -157,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   backgroundColor: Colors.white,
                                   radius: 25,
                                   backgroundImage:
-                                      AssetImage("assets/images/g.png"),
+                                  AssetImage("assets/images/g.png"),
                                 ),
                               ),
                               const SizedBox(
@@ -170,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   backgroundColor: Colors.white,
                                   radius: 25,
                                   backgroundImage:
-                                      AssetImage("assets/images/f.png"),
+                                  AssetImage("assets/images/f.png"),
                                 ),
                               ),
                               const SizedBox(
@@ -183,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   backgroundColor: Colors.white,
                                   radius: 25,
                                   backgroundImage:
-                                      AssetImage("assets/images/t.png"),
+                                  AssetImage("assets/images/t.png"),
                                 ),
                               ),
                             ],
@@ -193,28 +199,31 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           ConditionalBuilder(
                             condition: state is! LoginLoadingState,
-                            builder: (context) => Container(
-                              decoration: BoxDecoration(
-                                  color: defaultColor,
-                                  borderRadius: BorderRadius.circular(30)),
-                              child: MaterialButton(
-                                minWidth: double.infinity,
-                                height: 50,
-                                onPressed: () {
-                                  if (formKey.currentState!.validate()) {
-                                    AuthCubit.get(context).login(
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                    );
-                                  }
-                                },
-                                child: Text(
-                                  AppConstants.signIn.toUpperCase(),
-                                  style: const TextStyle(color: Colors.white),
+                            builder: (context) =>
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: defaultColor,
+                                      borderRadius: BorderRadius.circular(30)),
+                                  child: MaterialButton(
+                                    minWidth: double.infinity,
+                                    height: 50,
+                                    onPressed: () {
+                                      if (formKey.currentState!.validate()) {
+                                        AuthCubit.get(context).login(
+                                          email: emailController.text,
+                                          password: passwordController.text,
+                                        );
+                                      }
+                                    },
+                                    child: Text(
+                                      AppConstants.signIn.toUpperCase(),
+                                      style: const TextStyle(
+                                          color: Colors.white),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            fallback: (context) => const Center(
+                            fallback: (context) =>
+                            const Center(
                                 child: CircularProgressIndicator()),
                           ),
                           const SizedBox(
@@ -230,11 +239,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const RegisterScreen()),
+                                        const RegisterScreen()),
                                   );
                                 },
                                 child:
-                                    Text(AppConstants.register.toUpperCase()),
+                                Text(AppConstants.register.toUpperCase()),
                               )
                             ],
                           ),
